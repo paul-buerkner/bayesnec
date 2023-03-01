@@ -14,6 +14,8 @@ validate_family <- function(family) {
   } else if (is.character(family)) {
     if (family == "beta_binomial2") {
       family <- get(family)
+    } else if (family == "beta_binomial3") {
+      family <- get(family)
     } else {
       family <- get(family)(link = "identity")
     }

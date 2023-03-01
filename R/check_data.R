@@ -78,7 +78,9 @@ check_data <- function(data, family, model) {
     }
   }
   custom_name <- check_custom_name(family)
-  if (fam_tag == "binomial" || custom_name == "beta_binomial2") {
+  if (fam_tag == "binomial" || 
+      custom_name == "beta_binomial2" ||
+      custom_name == "beta_binomial3") {
     mod_dat$trials <- retrieve_var(data, "trials_var", error = TRUE)
   }
   list(mod_dat = mod_dat, family = family)

@@ -53,7 +53,9 @@ bnec_newdata.bayesnecfit <- function(x, precision = 100, x_range = NA) {
   names(newdata) <- x_var
   fam_tag <- fit$family$family
   custom_name <- check_custom_name(fit$family)
-  if (fam_tag == "binomial" || custom_name == "beta_binomial2") {
+  if (fam_tag == "binomial" || 
+      custom_name == "beta_binomial2" ||
+      custom_name == "beta_binomial3") {
     trials_var <- attr(data, "bnec_pop")[["trials_var"]]
     newdata[[trials_var]] <- 1
   }

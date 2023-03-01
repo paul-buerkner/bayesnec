@@ -38,7 +38,8 @@ interpolated NOEC value from smooth ECx curves.}
 containing the desired arguments to be passed on to \code{\link[brms]{loo}}
 (via "fitting") or to \code{\link[loo]{loo_model_weights}} (via "weights").
 If "fitting" is provided with argument \code{pointwise = TRUE}
-(due to memory issues) and \code{family = "beta_binomial2"}, the
+(due to memory issues) and \code{family = "beta_binomial2"} or
+\code{family = "beta_binomial3"}, the
 \code{\link{bnec}} will fail because that is a custom family. If "weights" is
 not provided by the user, \code{\link{bnec}} will set the default
 \code{method} argument in \code{\link[loo]{loo_model_weights}} to

@@ -40,7 +40,7 @@ mod_fams <- c(gaussian = "gaussian",
               negbinomial = "negbinomial",
               bernoulli = "bernoulli",
               binomial = "binomial",
-              custom = "beta_binomial2",
+              custom = "custom",
               beta = "Beta")
 
 ############
@@ -189,6 +189,12 @@ stan_funs <- "
     return beta_binomial_lpmf(y | T, mu * phi, (1 - mu) * phi);
   }
   int beta_binomial2_rng(real mu, real phi, int T) {
+    return beta_binomial_rng(T, mu * phi, (1 - mu) * phi);
+  }
+    real beta_binomial3_lpmf(int y, real mu, real phi, int T) {
+    return beta_binomial_lpmf(y | T, mu * phi, (1 - mu) * phi);
+  }
+  int beta_binomial3_rng(real mu, real phi, int T) {
     return beta_binomial_rng(T, mu * phi, (1 - mu) * phi);
   }
 "

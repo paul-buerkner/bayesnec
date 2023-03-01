@@ -313,7 +313,7 @@ response_link_scale <- function(response, family) {
   lr <- linear_rescale
   custom_name <- check_custom_name(family)
   if (link_tag %in% c("logit", "log")) {
-    if (custom_name == "beta_binomial2") {
+    if (custom_name == "beta_binomial2" | custom_name == "beta_binomial3") {
       if (contains_zero(response)) {
         response <- lr(response, r_out = c(min_z_val, max(response)))
       }

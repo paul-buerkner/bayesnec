@@ -6,4 +6,11 @@ beta_binomial2 <- brms::custom_family(
     type = "int", vars = "trials[n]"
   )
 
+beta_binomial3 <- brms::custom_family(
+  "beta_binomial3", dpars = c("mu", "phi"),
+  links = c("logit", "log"), lb = c(NA, 0),
+  type = "int", vars = "trials[n]"
+)
+
 usethis::use_data(beta_binomial2, overwrite = TRUE)
+usethis::use_data(beta_binomial3, overwrite = TRUE)

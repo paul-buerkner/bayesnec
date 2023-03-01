@@ -22,7 +22,8 @@
 #' containing the desired arguments to be passed on to \code{\link[brms]{loo}}
 #' (via "fitting") or to \code{\link[loo]{loo_model_weights}} (via "weights").
 #' If "fitting" is provided with argument \code{pointwise = TRUE}
-#' (due to memory issues) and \code{family = "beta_binomial2"}, the
+#' (due to memory issues) and \code{family = "beta_binomial2"} or 
+#' \code{family = "beta_binomial3"}, the
 #' \code{\link{bnec}} will fail because that is a custom family. If "weights" is
 #' not provided by the user, \code{\link{bnec}} will set the default
 #' \code{method} argument in \code{\link[loo]{loo_model_weights}} to
@@ -38,7 +39,8 @@
 #' to fit. See Details for more information.
 #' @param trials_var Removed in version 2.0. Use formula instead. Used to be a
 #' \code{\link[base]{character}} indicating the column
-#' heading for the number of "trials" for binomial or beta_binomial2 response
+#' heading for the number of "trials" for binomial, beta_binomial2 or 
+#' beta_binomial3 response
 #' data, as it appears in "data" (if data is supplied).
 #' @param random Removed in version 2.0. Use formula instead. Used to be a
 #' named \code{\link[base]{list}} containing the random model
@@ -125,7 +127,8 @@
 #' appropriate distribution will be guessed based on the characteristics of the
 #' input data. Guesses include: "bernoulli" / bernoulli / bernoulli(), "Beta" /
 #' Beta / Beta(), "binomial" / binomial / binomial(), "beta_binomial2" /
-#' beta_binomial2, "Gamma" / Gamma / Gamma(), "gaussian" / gaussian /
+#' beta_binomial2,"beta_binomial3" /
+#' beta_binomial3, "Gamma" / Gamma / Gamma(), "gaussian" / gaussian /
 #' gaussian(), "negbinomial" / negbinomial / negbinomial(), or "poisson" /
 #' poisson / poisson(). Note, however, that "negbinomial" and "betabinomimal2"
 #' require knowledge on whether the data is over-dispersed. As

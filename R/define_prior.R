@@ -16,7 +16,7 @@
 define_prior <- function(model, family, predictor, response) {
   link_tag <- family$link
   custom_name <- check_custom_name(family)
-  if (link_tag %in% c("logit", "log")) {
+  if (link_tag %in% c("logit", "log") || custom_name == "beta_binomial3") {
     fam_tag <- "gaussian"
   } else {
     if (custom_name == "beta_binomial2") {
@@ -25,7 +25,9 @@ define_prior <- function(model, family, predictor, response) {
       fam_tag <- family$family
     }
   }
-  if (custom_name == "beta_binomial2" || family$family == "binomial") {
+  if (custom_name == "beta_binomial2" || 
+      family$family == "binomial"||
+      custom_name == "beta_binomial3") {
     if (is.integer(response) || max(response) > 1) {
       stop("Response vector must be passed as a proportion to define_prior",
            " (not as integers) for the binomial and beta_binomial2 families.")
@@ -71,7 +73,8 @@ define_prior <- function(model, family, predictor, response) {
                                         probs = 0.5),
                                ", ", sd(predictor) * 10, ")"))
   lbs <- c(Gamma = 0, poisson = 0, negbinomial = 0, gaussian = NA,
-           bernoulli = 0, binomial = 0, beta_binomial2 = 0, beta = 0)
+           bernoulli = 0, binomial = 0, beta_binomial2 = 0, 
+           beta_binomial2 = 0, beta = 0)
   ubs <- c(Gamma = NA, poisson = NA, negbinomial = NA, gaussian = NA,
            bernoulli = 1, binomial = 1, beta_binomial2 = 1, beta = 1)
   # y-dependent priors

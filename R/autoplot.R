@@ -164,7 +164,9 @@ prep_raw_data <- function(brms_fit, bayesnecformula) {
   x_var <- attr(mod_dat, "bnec_pop")[["x_var"]]
   family <- brms_fit$family
   custom_name <- check_custom_name(family)
-  if (family$family == "binomial" | custom_name == "beta_binomial2") {
+  if (family$family == "binomial" | 
+      custom_name == "beta_binomial2" ||
+      custom_name == "beta_binomial3") {
     trials_var <- attr(mod_dat, "bnec_pop")[["trials_var"]]
     r_df[[y_var]] <- r_df[[y_var]] / r_df[[trials_var]]
   } else {
