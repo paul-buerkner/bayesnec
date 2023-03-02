@@ -70,7 +70,7 @@ dispersion <- function(model, summary = FALSE, seed = 10) {
     disp <- rowSums(prd_sr) / rowSums(sim_sr)
     if (any(is.na(disp))) {
       message("Your model predictions have generated no residuals; this is",
-              " most likely cause by a bad model fit. Ignoring dispersion",
+              " most likely caused by a bad model fit. Ignoring dispersion",
               " calculation.")
       numeric()
     } else {
